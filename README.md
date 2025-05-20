@@ -1,3 +1,25 @@
+## Timer States
+
+### 1. Idle State (Before the Event Starts)
+
+![Idle State](public/README/1-idle.png)
+
+### 2. Countdown to Start
+
+![Countdown to Start](public/README/1.1-counting-to-start.png)
+
+### 3. Running State (During the Event)
+
+![Running State](public/README/2-running.png)
+
+### 4. Survival Mode (Final Minutes)
+
+![Survival Mode](public/README/3-survival.png)
+
+### 5. Completed State (Event Ended)
+
+![Completed State](public/README/4-completed.png)
+
 ## Configuration
 
 The application can be configured using environment variables. Create a `.env` file in the root directory with the variables you want:
