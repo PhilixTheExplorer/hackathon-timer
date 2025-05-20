@@ -1,12 +1,22 @@
-# React + Vite
+## Configuration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The application can be configured using environment variables. Create a `.env` file in the root directory with the variables you want:
 
-Currently, two official plugins are available:
+| Variable                     | Description                                             | Default                 |
+| ---------------------------- | ------------------------------------------------------- | ----------------------- |
+| VITE_START_TIME              | Start time of the hackathon in ISO format               | 2025-05-19T18:50        |
+| VITE_END_TIME                | End time of the hackathon in ISO format                 | 2025-05-19T19:55        |
+| VITE_TIME_ZONE               | Timezone for the event                                  | Asia/Bangkok            |
+| VITE_SURVIVAL_PERIOD_MINUTES | Minutes before end when "survival mode" warning appears | 1                       |
+| VITE_EVENT_NAME              | Name of the event                                       | CS Hackathon Timer 2025 |
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+An example `.env` file is provided as `.env.example` for reference.
 
-## Expanding the ESLint configuration
+## Development
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To run the project locally:
+
+```bash
+npm install
+npm run dev
+```
