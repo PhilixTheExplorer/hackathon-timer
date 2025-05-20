@@ -1,0 +1,159 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 40%,
+      rgba(100, 255, 218, 0.05),
+      transparent 30%
+    ),
+    radial-gradient(circle at 70% 60%, rgba(0, 119, 182, 0.05), transparent 40%);
+  z-index: 0;
+}
+
+/* Timer mode-specific styles for main container */
+body.survival-mode {
+  background: linear-gradient(135deg, #201020 0%, #501030 100%);
+  animation: survival-background-pulse 4s infinite alternate;
+}
+
+body.survival-mode::before {
+  background: radial-gradient(
+      circle at 30% 40%,
+      rgba(255, 61, 103, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(circle at 70% 60%, rgba(201, 24, 74, 0.08), transparent 40%);
+  animation: survival-pulse 8s ease-in-out infinite alternate;
+}
+
+/* Survival mode heading styles */
+.hackathon-timer.survival h1 {
+  color: #ff3d67;
+  text-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
+  animation: title-throb 2s infinite alternate;
+}
+
+@keyframes survival-background-pulse {
+  0% {
+    background: linear-gradient(135deg, #201020 0%, #501030 100%);
+  }
+  100% {
+    background: linear-gradient(135deg, #301020 0%, #601030 100%);
+  }
+}
+
+@keyframes survival-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes title-throb {
+  0% {
+    text-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 25px rgba(255, 61, 103, 0.8);
+  }
+}
+
+/* Completed mode styles */
+body.completed-mode {
+  background: linear-gradient(135deg, #1a0d2c 0%, #301b47 100%);
+}
+
+body.completed-mode::before {
+  background: radial-gradient(
+      circle at 30% 40%,
+      rgba(157, 78, 221, 0.07),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(123, 44, 191, 0.07),
+      transparent 40%
+    );
+  animation: completed-pulse 10s ease-in-out infinite alternate;
+}
+
+/* Completed mode heading styles */
+.hackathon-timer.completed h1 {
+  color: #9d4edd;
+}
+
+@keyframes completed-pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.99);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.01);
+  }
+}
+
+/* Idle mode heading styles */
+.hackathon-timer.idle h1 {
+  color: #ffd700;
+}
+
+.hackathon-timer {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  margin: 0 auto;
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  color: #e6f1ff;
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+}
+
+.current-time {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  color: #8892b0;
+  font-size: 0.1rem;
+}
+
+.current-time p {
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+}
+
+h1 {
+  color: #64ffda;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  color: #e6f1ff;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}

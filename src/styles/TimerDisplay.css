@@ -1,0 +1,300 @@
+.timer-display {
+  padding: 2.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  background-color: rgba(16, 30, 62, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(100, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.timer-display::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  z-index: 1;
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+.timer-display h2 {
+  transition: all 0.3s ease;
+}
+
+/* Yellow header for idle state */
+.timer-display.idle h2 {
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Red header for survival mode */
+.timer-display.survival h2 {
+  color: #ff3d67;
+  text-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.timer-display.completed h2 {
+  color: #9d4edd;
+  text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+  font-weight: bold;
+}
+
+.timer-display.idle::before {
+  background: linear-gradient(to bottom, #ffd700 0%, #ffa500 100%);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  width: 8px;
+}
+
+.timer-display.running::before {
+  background: linear-gradient(to bottom, #00f5d4 0%, #0077b6 100%);
+  box-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+}
+
+.timer-display.survival::before {
+  background: linear-gradient(to bottom, #ff4d6d 0%, #c9184a 100%);
+  box-shadow: 0 0 25px rgba(255, 77, 109, 0.8);
+  animation: pulse 1.2s infinite;
+  width: 8px;
+}
+
+.timer-display.completed::before {
+  background: linear-gradient(to bottom, #a76ecc 0%, #7b2cbf 100%);
+  box-shadow: 0 0 15px rgba(123, 44, 191, 0.5);
+  width: 8px;
+}
+
+/* Yellow color for idle state time values */
+.timer-display.idle .time-value {
+  color: #ffd700; /* Gold/Yellow color */
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  font-weight: 800;
+}
+
+/* Red color for survival mode time values */
+.timer-display.survival .time-value {
+  color: #ff3d67; /* Bright red color */
+  text-shadow: 0 0 15px rgba(255, 61, 103, 0.7);
+  animation: throb 1.5s infinite alternate;
+}
+
+/* Purple color for completed mode time values */
+.timer-display.completed .time-value {
+  color: #9d4edd;
+  text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
+}
+
+/* Yellow-tinted labels for idle state */
+.timer-display.idle .time-label {
+  color: #cca76a;
+}
+
+/* Red-tinted labels for survival mode */
+.timer-display.survival .time-label {
+  color: #ff8fa3;
+  font-weight: bold;
+}
+
+.time-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #8892b0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timer-display.completed .time-block {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 20, 40, 0.8),
+    rgba(20, 10, 30, 0.8)
+  );
+  border: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+.countdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    145deg,
+    rgba(23, 42, 69, 0.8),
+    rgba(10, 25, 47, 0.8)
+  );
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    background 0.5s ease-in-out;
+}
+
+.time-block::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(100, 255, 218, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.time-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.time-block:hover::after {
+  opacity: 1;
+}
+
+.time-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #64ffda;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+  margin-bottom: 0.5rem;
+  font-family: "Roboto Mono", monospace;
+  transition: color 0.5s ease;
+}
+
+.survival-warning {
+  color: #ff4d6d;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 1rem auto 1.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 77, 109, 0.2);
+  border: 2px solid rgba(255, 77, 109, 0.6);
+  border-radius: 8px;
+  animation: warning-pulse 1.5s infinite;
+  max-width: 90%;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
+}
+@keyframes warning-pulse {
+  0% {
+    background-color: rgba(255, 77, 109, 0.15);
+    box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
+  }
+  50% {
+    background-color: rgba(255, 77, 109, 0.25);
+    box-shadow: 0 0 20px rgba(255, 30, 84, 0.5);
+  }
+  100% {
+    background-color: rgba(255, 77, 109, 0.15);
+    box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
+  }
+}
+/* Timer state transitions */
+.timer-display.idle {
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.25);
+  background-color: rgba(30, 25, 5, 0.7);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.timer-display.running {
+  box-shadow: 0 8px 32px rgba(0, 245, 212, 0.1);
+}
+
+/* Styling for completed state */
+.timer-display.completed {
+  box-shadow: 0 8px 32px rgba(157, 78, 221, 0.2);
+  background-color: rgba(30, 20, 40, 0.7);
+  border: 1px solid rgba(157, 78, 221, 0.2);
+}
+
+/* Adding special styling for the time blocks in survival mode */
+.timer-display.survival .time-block {
+  background: linear-gradient(
+    145deg,
+    rgba(40, 10, 20, 0.9),
+    rgba(30, 5, 15, 0.9)
+  );
+  border: 1px solid rgba(255, 77, 109, 0.3);
+  box-shadow: 0 0 20px rgba(255, 60, 100, 0.2);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timer-display.survival .time-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 60, 100, 0.3);
+}
+
+.timer-display.survival .time-block::after {
+  background: radial-gradient(
+    circle,
+    rgba(255, 77, 109, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+.timer-display.survival .time-block:hover::after {
+  opacity: 1;
+}
+
+.timer-display.survival {
+  box-shadow: 0 8px 32px rgba(255, 30, 84, 0.25);
+  border: 1px solid rgba(255, 77, 109, 0.3);
+  background-color: rgba(30, 15, 30, 0.8);
+}
+
+.timer-display.completed {
+  box-shadow: 0 8px 32px rgba(255, 117, 143, 0.1);
+}
+
+/* Adding special styling for the time blocks in idle mode */
+.timer-display.idle .time-block {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 30, 10, 0.8),
+    rgba(25, 20, 5, 0.8)
+  );
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.timer-display.idle .time-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.25);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.timer-display.idle .time-block::after {
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.1) 0%,
+    transparent 70%
+  );
+}

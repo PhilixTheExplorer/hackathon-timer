@@ -1,0 +1,14 @@
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+  height: auto;
+  z-index: 100;
+  filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.5));
+  transition: filter 0.5s ease;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 15px rgba(100, 255, 218, 0.8));
+}
