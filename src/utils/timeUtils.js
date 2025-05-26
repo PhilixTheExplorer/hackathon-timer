@@ -1,7 +1,7 @@
 /**
  * Calculates time remaining between now and a target date
  * @param {Date} targetDate - The target date to calculate time until
- * @returns {Object} Object containing days, hours, minutes, seconds
+ * @returns {Object} Object containing hours, minutes, seconds
  */
 export const calculateTimeRemaining = (targetDate) => {
     const now = new Date();
@@ -9,12 +9,11 @@ export const calculateTimeRemaining = (targetDate) => {
 
     // If the difference is negative, return all zeros
     if (diff <= 0) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        return { hours: 0, minutes: 0, seconds: 0 };
     }
 
     return {
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        hours: Math.floor(diff / (1000 * 60 * 60)),
         minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((diff % (1000 * 60)) / 1000),
     };

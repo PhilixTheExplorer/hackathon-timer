@@ -17,7 +17,6 @@ function App() {
   );
 
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -84,7 +83,7 @@ function App() {
         setTimeLeft(calculateTimeRemaining(endDateTime));
       } else {
         // Event completed
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
       }
     }, 1000);
 

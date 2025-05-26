@@ -50,7 +50,6 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
     // Handle pre-start countdown (3 seconds before start)
     if (
       timerStatus === "idle" &&
-      timeLeft.days === 0 &&
       timeLeft.hours === 0 &&
       timeLeft.minutes === 0 &&
       timeLeft.seconds <= 3 &&
@@ -193,12 +192,8 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
           ⚠️ FINAL COUNTDOWN: Less than {survivalPeriodMinutes} minutes
           remaining! ⚠️
         </div>
-      )}
+      )}{" "}
       <div className="countdown">
-        <div className="time-block">
-          <span className="time-value">{timeLeft.days}</span>
-          <span className="time-label">days</span>
-        </div>
         <div className="time-block">
           <span className="time-value">{timeLeft.hours}</span>
           <span className="time-label">hours</span>
