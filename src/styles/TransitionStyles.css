@@ -1,24 +1,25 @@
 .transition-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
   pointer-events: none;
-  border-radius: 16px;
 }
 
 .transition-text {
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: bold;
   color: #64ffda;
-  text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+  text-shadow: 0 0 30px rgba(100, 255, 218, 0.8);
   animation: fade-in 0.5s ease-in-out;
+  text-align: center;
+  padding: 2rem;
 }
 
 /* Running transition theme - Cyan/Blue */
@@ -82,18 +83,17 @@
 }
 
 .countdown-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 215, 0, 0.15);
-  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
   pointer-events: none;
-  border-radius: 16px;
   overflow: hidden;
   animation: overlay-pulse 1s ease-in-out infinite;
 }
@@ -113,13 +113,13 @@
 
 @keyframes overlay-pulse {
   0% {
-    background-color: rgba(255, 215, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.8);
   }
   50% {
-    background-color: rgba(255, 215, 0, 0.25);
+    background-color: rgba(0, 0, 0, 0.9);
   }
   100% {
-    background-color: rgba(255, 215, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }
 
@@ -159,8 +159,8 @@
   position: relative;
   font-size: 12rem;
   font-weight: 800;
-  color: rgba(255, 215, 0, 0.9);
-  text-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+  color: #ffd700;
+  text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 0.8);
   transform-origin: center;
 }
 

@@ -42,6 +42,14 @@
   letter-spacing: 0.5px;
 }
 
+/* Cyan/Blue header for running mode */
+.timer-display.running h2 {
+  color: #64ffda;
+  text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
 .timer-display.completed h2 {
   color: #9d4edd;
   text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
@@ -86,6 +94,13 @@
   animation: throb 1.5s infinite alternate;
 }
 
+/* Cyan/Blue color for running mode time values */
+.timer-display.running .time-value {
+  color: #64ffda; /* Bright cyan color */
+  text-shadow: 0 0 15px rgba(100, 255, 218, 0.6);
+  font-weight: 800;
+}
+
 /* Purple color for completed mode time values */
 .timer-display.completed .time-value {
   color: #9d4edd;
@@ -101,6 +116,12 @@
 .timer-display.survival .time-label {
   color: #ff8fa3;
   font-weight: bold;
+}
+
+/* Cyan-tinted labels for running mode */
+.timer-display.running .time-label {
+  color: #7dd3fc;
+  font-weight: 600;
 }
 
 .time-label {
@@ -249,7 +270,10 @@
 }
 
 .timer-display.running {
-  box-shadow: 0 8px 32px rgba(0, 245, 212, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 245, 212, 0.15);
+  background-color: rgba(16, 30, 62, 0.8);
+  border: 1px solid rgba(100, 255, 218, 0.2);
+  transition: all 0.3s ease;
 }
 
 /* Styling for completed state */

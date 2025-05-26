@@ -30,13 +30,40 @@ body::before {
 }
 
 /* Timer mode-specific styles for main container */
-/* Idle mode styles with background image */
+/* Idle mode styles - no background */
 body.idle-mode {
-  background: url("/Wall.png") no-repeat center center fixed;
-  background-size: cover;
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
   position: relative;
 }
 
+/* Enhanced running mode background */
+body.running-mode {
+  background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+  position: relative;
+}
+
+body.running-mode::before {
+  background: radial-gradient(
+      circle at 30% 40%,
+      rgba(100, 255, 218, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(circle at 70% 60%, rgba(0, 119, 182, 0.08), transparent 40%);
+  animation: running-pulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes running-pulse {
+  0% {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+/* Survival mode styles */
 body.survival-mode {
   background: linear-gradient(135deg, #201020 0%, #501030 100%);
   animation: survival-background-pulse 4s infinite alternate;
@@ -163,4 +190,49 @@ h2 {
   color: #e6f1ff;
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+/* Main container for side-by-side layout */
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  padding: 1rem;
+}
+
+/* Enhanced running mode layout */
+.main-container.running {
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* When not running, center the timer */
+.main-container.idle,
+.main-container.survival,
+.main-container.completed {
+  justify-content: center;
+  align-content: center;
+}
+
+/* Mascot container styles */
+.mascot-container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.mascot-image {
+  max-width: 400px;
+  border-radius: 12px;
+  filter: drop-shadow(0 8px 32px rgba(100, 255, 218, 0.2));
+}
+
+/* Adjust hackathon-timer for side-by-side layout */
+.main-container.running .hackathon-timer {
+  flex: 1;
 }
