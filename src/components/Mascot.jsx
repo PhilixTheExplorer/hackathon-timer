@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { TIMER_STATES } from '../constants/config';
+import PropTypes from "prop-types";
+import { TIMER_STATES } from "../constants/config";
 
 /**
  * Mascot component that displays during running state

@@ -1,9 +1,13 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 /**
  * Full-screen transition overlay component
  */
-const TransitionOverlay = ({ showTransition, activeTransition, transitionMessage }) => {
+const TransitionOverlay = ({
+  showTransition,
+  activeTransition,
+  transitionMessage,
+}) => {
   if (!showTransition) {
     return null;
   }

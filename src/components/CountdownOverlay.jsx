@@ -1,16 +1,22 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 /**
  * Full-screen countdown overlay component
  */
-const CountdownOverlay = ({ showCountdown, countdownNumber, animateNumber }) => {
+const CountdownOverlay = ({
+  showCountdown,
+  countdownNumber,
+  animateNumber,
+}) => {
   if (!showCountdown) {
     return null;
   }
 
   return (
     <div className="countdown-overlay">
-      <div className={`countdown-number ${animateNumber ? "animate-number" : ""}`}>
+      <div
+        className={`countdown-number ${animateNumber ? "animate-number" : ""}`}
+      >
         {countdownNumber}
       </div>
     </div>

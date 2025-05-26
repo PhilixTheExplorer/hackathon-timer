@@ -1,11 +1,11 @@
 /* Main App Styles - Modular CSS Architecture */
 
 /* Import modular stylesheets */
-@import './base.css';
-@import './firefly.css';
-@import './layout.css';
-@import './mascot.css';
-@import './utilities.css';
+@import "./base.css";
+@import "./firefly.css";
+@import "./layout.css";
+@import "./mascot.css";
+@import "./utilities.css";
 
 /* Legacy styles for backwards compatibility */
 /* These can be gradually moved to appropriate modules */

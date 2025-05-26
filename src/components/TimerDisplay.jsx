@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import { TIMER_STATES } from '../constants/config';
+import PropTypes from "prop-types";
+import { TIMER_STATES } from "../constants/config";
 import "../styles/TimerDisplay.css";
 
 /**
@@ -33,7 +33,8 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
 
       {timerStatus === TIMER_STATES.SURVIVAL && (
         <div className="survival-warning">
-          ⚠️ FINAL COUNTDOWN: Less than {survivalPeriodMinutes} minutes remaining! ⚠️
+          ⚠️ FINAL COUNTDOWN: Less than {survivalPeriodMinutes} minutes
+          remaining! ⚠️
         </div>
       )}
 

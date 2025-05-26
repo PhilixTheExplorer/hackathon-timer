@@ -22,9 +22,13 @@ import { CONFIG } from "./constants/config";
 function App() {
   // Custom hooks for state management
   const { timeLeft, timerStatus, currentTime } = useTimerState();
-  const { showCountdown, countdownNumber, animateNumber } = useCountdown(timerStatus, timeLeft);
-  const { showTransition, activeTransition, transitionMessage } = useTransitions(timerStatus);
-  
+  const { showCountdown, countdownNumber, animateNumber } = useCountdown(
+    timerStatus,
+    timeLeft
+  );
+  const { showTransition, activeTransition, transitionMessage } =
+    useTransitions(timerStatus);
+
   // Manage body classes based on timer status
   useBodyClassManager(timerStatus);
 
@@ -32,16 +36,16 @@ function App() {
     <>
       <div className={`main-container ${timerStatus}`}>
         <Mascot timerStatus={timerStatus} />
-        
+
         <div className={`hackathon-timer ${timerStatus}`}>
           <h1>{CONFIG.EVENT_NAME}</h1>
-          
+
           <TimerDisplay
             timerStatus={timerStatus}
             timeLeft={timeLeft}
             survivalPeriodMinutes={CONFIG.SURVIVAL_PERIOD_MINUTES}
           />
-          
+
           <CurrentTime currentTime={currentTime} />
         </div>
       </div>
