@@ -30,6 +30,13 @@ body::before {
 }
 
 /* Timer mode-specific styles for main container */
+/* Idle mode styles with background image */
+body.idle-mode {
+  background: url("/Wall.png") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
 body.survival-mode {
   background: linear-gradient(135deg, #201020 0%, #501030 100%);
   animation: survival-background-pulse 4s infinite alternate;

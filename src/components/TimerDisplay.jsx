@@ -13,35 +13,8 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
   const [prevCountdownNum, setPrevCountdownNum] = useState(null);
   const [animateNumber, setAnimateNumber] = useState(false);
   const [transitionMessage, setTransitionMessage] = useState("");
-
-  // Helper function for animating time blocks
-  const animateTimeBlocks = (blockClass, valueClass) => {
-    // Add animation class to time blocks
-    document.querySelectorAll(".time-block").forEach((block) => {
-      block.classList.add(blockClass);
-
-      // Remove the class after animation completes
-      setTimeout(() => {
-        block.classList.remove(blockClass);
-      }, 3000);
-    });
-
-    // Add animation to time values
-    document.querySelectorAll(".time-value").forEach((value) => {
-      value.classList.add(valueClass);
-
-      // Remove the class after animation completes
-      setTimeout(() => {
-        value.classList.remove(valueClass);
-      }, 3000);
-    });
-  };
-
   // Helper to get transition class name
   const getTransitionClassName = () => {
-    if (showTransition) return "transition-to-running";
-    if (showSurvivalTransition) return "transition-to-survival";
-    if (showCompletedTransition) return "transition-to-completed";
     return "";
   };
 
@@ -82,23 +55,17 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
         idle_running: {
           setShow: setShowTransition,
           type: "running",
-          message: "Hackathon Started!",
-          blockClass: "transition-active",
-          valueClass: "transition-value",
+          message: "🚀 Let's Code! Hackathon is LIVE! 🚀",
         },
         running_survival: {
           setShow: setShowSurvivalTransition,
           type: "survival",
-          message: "Final Countdown!",
-          blockClass: "survival-transition",
-          valueClass: "survival-value",
+          message: "⚡ CRUNCH TIME! Final push! ⚡",
         },
         survival_completed: {
           setShow: setShowCompletedTransition,
           type: "completed",
-          message: "Time's Up!",
-          blockClass: "completed-transition",
-          valueClass: "completed-value",
+          message: "🎉 Hackathon COMPLETE! Well done, CS Juniors! 🎉",
         },
       };
 
@@ -110,16 +77,10 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
         // Handle specific transitions
         if (transitionKey === "idle_running") {
           setShowCountdown(false);
-        }
-
-        // Set up the transition
+        } // Set up the transition
         currentTransition.setShow(true);
         setActiveTransition(currentTransition.type);
         setTransitionMessage(currentTransition.message);
-        animateTimeBlocks(
-          currentTransition.blockClass,
-          currentTransition.valueClass
-        );
 
         // Hide transition after animation completes
         const timer = setTimeout(() => {
@@ -151,11 +112,7 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
   ]);
 
   return (
-    <div
-      className={`timer-display ${timerStatus} ${getTransitionClassName()} ${
-        showCountdown ? "pre-start-countdown" : ""
-      }`}
-    >
+    <div className={`timer-display ${timerStatus} ${getTransitionClassName()}`}>
       <h2>
         {timerStatus === "idle" && !showCountdown && "Time until start:"}
         {timerStatus === "idle" && showCountdown && "Starting in:"}
@@ -176,15 +133,8 @@ const TimerDisplay = ({ timerStatus, timeLeft, survivalPeriodMinutes }) => {
       )}{" "}
       {/* Render transitions based on which one is active */}
       {activeTransition && (
-        <div className={`${activeTransition}-transition`}>
-          <div
-            className={`transition-text ${activeTransition}-transition-text`}
-          >
-            {transitionMessage}
-          </div>
-          <div
-            className={`transition-countdown ${activeTransition}-countdown`}
-          ></div>
+        <div className={`transition-overlay ${activeTransition}-transition`}>
+          <div className="transition-text">{transitionMessage}</div>
         </div>
       )}
       {timerStatus === "survival" && (
