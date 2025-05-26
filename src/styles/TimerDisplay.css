@@ -126,6 +126,7 @@
 
 /* Base Time Components */
 .time-label {
+  font-family: var(--font-family-body);
   font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-text-secondary);
@@ -199,18 +200,20 @@
 
 .time-value {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--color-primary-cyan);
   text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
   margin-bottom: var(--spacing-xs);
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-family-display);
   transition: color var(--transition-medium);
+  letter-spacing: 0.02em;
 }
 
 /* Survival Warning Component */
 .survival-warning {
   color: var(--color-primary-red);
-  font-weight: bold;
+  font-family: var(--font-family-display);
+  font-weight: 400;
   font-size: 1.2rem;
   margin: var(--spacing-sm) auto var(--spacing-md);
   padding: var(--spacing-sm);
@@ -220,7 +223,7 @@
   animation: warning-pulse 1.5s infinite;
   max-width: 90%;
   text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
 }
 

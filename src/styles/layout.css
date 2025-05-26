@@ -27,7 +27,7 @@
 
 /* Hackathon timer container */
 .hackathon-timer {
-  font-family: var(--font-family-primary);
+  font-family: var(--font-family-body);
   margin: 0 auto;
   padding: var(--spacing-xl);
   backdrop-filter: blur(10px);
@@ -35,6 +35,7 @@
   position: relative;
   z-index: var(--z-content);
   min-height: 100vh;
+  flex-grow: 1;
 }
 
 /* Adjust hackathon-timer for side-by-side layout */
@@ -44,16 +45,22 @@
 
 /* Typography */
 h1 {
+  font-family: var(--font-family-display);
+  font-weight: 900;
   color: var(--color-primary-cyan);
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-lg);
   transition: var(--transition-medium);
+  letter-spacing: 0.02em;
 }
 
 h2 {
+  font-family: var(--font-family-display);
+  font-weight: 400;
   color: var(--color-text-primary);
   font-size: var(--font-size-md);
   margin-bottom: var(--spacing-md);
+  letter-spacing: 0.01em;
 }
 
 /* State-specific heading styles */

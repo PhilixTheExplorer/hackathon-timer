@@ -15,6 +15,7 @@ import { useTransitions } from "./hooks/useTransitions";
 
 // Constants
 import { CONFIG } from "./constants/config";
+import Header from "./components/Header";
 
 /**
  * Main App component - Hackathon Timer
@@ -35,6 +36,7 @@ function App() {
   return (
     <>
       <div className={`main-container ${timerStatus}`}>
+        <Header />
         <Mascot timerStatus={timerStatus} />
 
         <div className={`hackathon-timer ${timerStatus}`}>
