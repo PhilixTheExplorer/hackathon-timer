@@ -6,19 +6,22 @@
 
 ### 2. Countdown to Start
 
-![Countdown to Start](public/README/1.1-counting-to-start.png)
+![Countdown to Start](public/README/1.1.png)
 
 ### 3. Running State (During the Event)
 
-![Running State](public/README/2-running.png)
+![Running State](public/README/2.0.png)
+![Running State](public/README/2.1.png)
 
 ### 4. Survival Mode (Final Minutes)
 
-![Survival Mode](public/README/3-survival.png)
+![Survival Mode](public/README/3.0.png)
+![Survival Mode](public/README/3.1.png)
 
 ### 5. Completed State (Event Ended)
 
-![Completed State](public/README/4-completed.png)
+![Completed State](public/README/4.0.png)
+![Completed State](public/README/4.1.png)
 
 ## Configuration
 
