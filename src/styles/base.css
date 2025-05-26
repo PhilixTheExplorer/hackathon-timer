@@ -1,0 +1,85 @@
+/* Base styles and CSS custom properties */
+:root {
+  /* Color Palette */
+  --color-primary-cyan: #64ffda;
+  --color-primary-gold: #ffd700;
+  --color-primary-red: #ff3d67;
+  --color-primary-purple: #9d4edd;
+  
+  --color-text-primary: #e6f1ff;
+  --color-text-secondary: #8892b0;
+  --color-background-dark: #0a192f;
+  --color-background-medium: #172a45;
+  
+  /* Firefly Colors */
+  --firefly-yellow: rgba(255, 215, 0, 0.15);
+  --firefly-cyan: rgba(100, 255, 218, 0.15);
+  --firefly-red: rgba(255, 61, 103, 0.18);
+  --firefly-purple: rgba(157, 78, 221, 0.16);
+  
+  /* Shadows */
+  --shadow-glow-cyan: 0 8px 32px rgba(100, 255, 218, 0.3);
+  --shadow-glow-gold: 0 0 30px rgba(255, 215, 0, 0.8);
+  --shadow-glow-red: 0 0 35px rgba(255, 61, 103, 0.9);
+  --shadow-glow-purple: 0 0 30px rgba(157, 78, 221, 0.8);
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+  
+  /* Typography */
+  --font-family-primary: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-sm: 0.95rem;
+  --font-size-md: 1.5rem;
+  --font-size-lg: 2.5rem;
+  --font-size-xl: 12rem;
+  
+  /* Transitions */
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.6s ease;
+  --transition-slow: 1s ease;
+  
+  /* Z-indexes */
+  --z-background: 0;
+  --z-content: 10;
+  --z-mascot: 20;
+  --z-overlay: 1000;
+}
+
+/* Base reset and global styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  background: linear-gradient(135deg, var(--color-background-dark) 0%, var(--color-background-medium) 100%);
+  overflow: hidden;
+  position: relative;
+  color: var(--color-text-primary);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(100, 255, 218, 0.05), transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(0, 119, 182, 0.05), transparent 40%);
+  z-index: var(--z-background);
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+  text-align: center;
+  height: 100vh;
+}

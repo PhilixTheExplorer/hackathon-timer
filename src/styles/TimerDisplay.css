@@ -1,14 +1,15 @@
+/* Timer Display Component Styles */
 .timer-display {
-  padding: 2.5rem;
+  padding: var(--spacing-xl);
   max-width: 800px;
   margin: 0 auto;
   border-radius: 16px;
-  background-color: rgba(16, 30, 62, 0.7);
+  background-color: var(--color-background-medium);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   border: 1px solid rgba(100, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
-  transition: all 0.5s ease-in-out;
+  transition: all var(--transition-medium);
 }
 
 .timer-display::before {
@@ -18,47 +19,46 @@
   left: 0;
   width: 5px;
   height: 100%;
-  z-index: 1;
-  transition: background 0.5s ease, box-shadow 0.5s ease;
+  z-index: var(--z-content);
+  transition: background var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 .timer-display h2 {
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
-/* Yellow header for idle state */
+/* Timer State Headers */
 .timer-display.idle h2 {
-  color: #ffd700;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  color: var(--color-primary-gold);
+  text-shadow: var(--shadow-glow-gold);
   font-weight: bold;
   letter-spacing: 0.5px;
 }
 
-/* Red header for survival mode */
 .timer-display.survival h2 {
-  color: #ff3d67;
-  text-shadow: 0 0 15px rgba(255, 61, 103, 0.5);
+  color: var(--color-primary-red);
+  text-shadow: var(--shadow-glow-red);
   font-weight: bold;
   letter-spacing: 0.5px;
 }
 
-/* Cyan/Blue header for running mode */
 .timer-display.running h2 {
-  color: #64ffda;
-  text-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
+  color: var(--color-primary-cyan);
+  text-shadow: var(--shadow-glow-cyan);
   font-weight: bold;
   letter-spacing: 0.5px;
 }
 
 .timer-display.completed h2 {
-  color: #9d4edd;
-  text-shadow: 0 0 15px rgba(157, 78, 221, 0.5);
+  color: var(--color-primary-purple);
+  text-shadow: var(--shadow-glow-purple);
   font-weight: bold;
 }
 
+/* Timer Display State Borders */
 .timer-display.idle::before {
-  background: linear-gradient(to bottom, #ffd700 0%, #ffa500 100%);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  background: linear-gradient(to bottom, var(--color-primary-gold) 0%, #ffa500 100%);
+  box-shadow: var(--shadow-glow-gold);
   width: 8px;
 }
 
@@ -80,54 +80,50 @@
   width: 8px;
 }
 
-/* Yellow color for idle state time values */
+/* Time Value Styling by State */
 .timer-display.idle .time-value {
-  color: #ffd700; /* Gold/Yellow color */
+  color: var(--color-primary-gold);
   text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
   font-weight: 800;
 }
 
-/* Red color for survival mode time values */
 .timer-display.survival .time-value {
-  color: #ff3d67; /* Bright red color */
+  color: var(--color-primary-red);
   text-shadow: 0 0 15px rgba(255, 61, 103, 0.7);
   animation: throb 1.5s infinite alternate;
 }
 
-/* Cyan/Blue color for running mode time values */
 .timer-display.running .time-value {
-  color: #64ffda; /* Bright cyan color */
+  color: var(--color-primary-cyan);
   text-shadow: 0 0 15px rgba(100, 255, 218, 0.6);
   font-weight: 800;
 }
 
-/* Purple color for completed mode time values */
 .timer-display.completed .time-value {
-  color: #9d4edd;
+  color: var(--color-primary-purple);
   text-shadow: 0 0 10px rgba(157, 78, 221, 0.5);
 }
 
-/* Yellow-tinted labels for idle state */
+/* Time Label Styling by State */
 .timer-display.idle .time-label {
   color: #cca76a;
 }
 
-/* Red-tinted labels for survival mode */
 .timer-display.survival .time-label {
   color: #ff8fa3;
   font-weight: bold;
 }
 
-/* Cyan-tinted labels for running mode */
 .timer-display.running .time-label {
   color: #7dd3fc;
   font-weight: 600;
 }
 
+/* Base Time Components */
 .time-label {
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
-  color: #8892b0;
+  color: var(--color-text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -144,9 +140,9 @@
 .countdown {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: var(--spacing-md);
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: var(--spacing-lg);
 }
 
 .time-block {
@@ -154,7 +150,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 100px;
-  padding: 1.25rem;
+  padding: var(--spacing-md);
   border-radius: 12px;
   background: linear-gradient(
     145deg,
@@ -166,8 +162,8 @@
   backdrop-filter: blur(4px);
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease,
-    background 0.5s ease-in-out;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-medium);
 }
 
 .time-block::after {
@@ -183,7 +179,7 @@
     transparent 70%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-fast);
   pointer-events: none;
 }
 
@@ -199,19 +195,20 @@
 .time-value {
   font-size: 3rem;
   font-weight: 700;
-  color: #64ffda;
+  color: var(--color-primary-cyan);
   text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--spacing-xs);
   font-family: "Roboto Mono", monospace;
-  transition: color 0.5s ease;
+  transition: color var(--transition-medium);
 }
 
+/* Survival Warning Component */
 .survival-warning {
-  color: #ff4d6d;
+  color: var(--color-primary-red);
   font-weight: bold;
   font-size: 1.2rem;
-  margin: 1rem auto 1.5rem;
-  padding: 1rem;
+  margin: var(--spacing-sm) auto var(--spacing-md);
+  padding: var(--spacing-sm);
   background-color: rgba(255, 77, 109, 0.2);
   border: 2px solid rgba(255, 77, 109, 0.6);
   border-radius: 8px;
@@ -222,6 +219,7 @@
   box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
 }
 
+/* Animations */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -262,7 +260,7 @@
     box-shadow: 0 0 15px rgba(255, 30, 84, 0.3);
   }
 }
-/* Timer state transitions */
+/* Timer Display State Backgrounds */
 .timer-display.idle {
   box-shadow: 0 8px 32px rgba(255, 215, 0, 0.25);
   background-color: rgba(30, 25, 5, 0.7);
@@ -270,20 +268,25 @@
 }
 
 .timer-display.running {
-  box-shadow: 0 8px 32px rgba(0, 245, 212, 0.15);
+  box-shadow: var(--shadow-glow-cyan);
   background-color: rgba(16, 30, 62, 0.8);
   border: 1px solid rgba(100, 255, 218, 0.2);
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
-/* Styling for completed state */
 .timer-display.completed {
   box-shadow: 0 8px 32px rgba(157, 78, 221, 0.2);
   background-color: rgba(30, 20, 40, 0.7);
   border: 1px solid rgba(157, 78, 221, 0.2);
 }
 
-/* Adding special styling for the time blocks in survival mode */
+.timer-display.survival {
+  box-shadow: 0 8px 32px rgba(255, 30, 84, 0.25);
+  border: 1px solid rgba(255, 77, 109, 0.3);
+  background-color: rgba(30, 15, 30, 0.8);
+}
+
+/* State-specific Time Block Styling */
 .timer-display.survival .time-block {
   background: linear-gradient(
     145deg,
@@ -293,7 +296,7 @@
   border: 1px solid rgba(255, 77, 109, 0.3);
   box-shadow: 0 0 20px rgba(255, 60, 100, 0.2);
   transform: translateY(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .timer-display.survival .time-block:hover {
@@ -313,17 +316,6 @@
   opacity: 1;
 }
 
-.timer-display.survival {
-  box-shadow: 0 8px 32px rgba(255, 30, 84, 0.25);
-  border: 1px solid rgba(255, 77, 109, 0.3);
-  background-color: rgba(30, 15, 30, 0.8);
-}
-
-.timer-display.completed {
-  box-shadow: 0 8px 32px rgba(255, 117, 143, 0.1);
-}
-
-/* Adding special styling for the time blocks in idle mode */
 .timer-display.idle .time-block {
   background: linear-gradient(
     145deg,
@@ -333,7 +325,7 @@
   border: 1px solid rgba(255, 215, 0, 0.2);
   box-shadow: 0 8px 32px rgba(255, 215, 0, 0.15);
   transform: translateY(0);
-  transition: all 0.3s ease;
+  transition: all var(--transition-fast);
 }
 
 .timer-display.idle .time-block:hover {

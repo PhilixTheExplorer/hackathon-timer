@@ -1,0 +1,37 @@
+/* Mascot component styles */
+
+.mascot-container {
+  align-self: flex-start;
+  padding-top: 5%;
+  transition: var(--transition-fast);
+}
+
+.mascot-image {
+  max-width: 450px;
+  height: auto;
+  border-radius: 12px;
+  filter: drop-shadow(var(--shadow-glow-cyan));
+  transition: var(--transition-medium);
+}
+
+.mascot-image:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 40px rgba(100, 255, 218, 0.4));
+}
+
+/* Responsive mascot styles */
+@media (max-width: 768px) {
+  .mascot-container {
+    padding-top: 3%;
+  }
+  
+  .mascot-image {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mascot-image {
+    max-width: 250px;
+  }
+}

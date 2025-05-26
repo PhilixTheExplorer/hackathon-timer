@@ -1,3 +1,4 @@
+/* Transition and Overlay Styles */
 .transition-overlay {
   position: fixed;
   top: 0;
@@ -8,23 +9,23 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-  z-index: 1000;
+  z-index: var(--z-overlay);
   pointer-events: none;
 }
 
 .transition-text {
   font-size: 4rem;
   font-weight: bold;
-  color: #64ffda;
-  text-shadow: 0 0 30px rgba(100, 255, 218, 0.8);
+  color: var(--color-primary-cyan);
+  text-shadow: var(--shadow-glow-cyan);
   animation: fade-in 0.5s ease-in-out;
   text-align: center;
-  padding: 2rem;
+  padding: var(--spacing-lg);
 }
 
-/* Running transition theme - Cyan/Blue */
+/* State-specific Transition Themes */
 .running-transition .transition-text {
-  color: #64ffda;
+  color: var(--color-primary-cyan);
   text-shadow: 0 0 20px rgba(100, 255, 218, 0.8);
 }
 
@@ -32,9 +33,8 @@
   background-color: rgba(0, 119, 182, 0.8);
 }
 
-/* Survival transition theme - Red */
 .survival-transition .transition-text {
-  color: #ff3d67;
+  color: var(--color-primary-red);
   text-shadow: 0 0 20px rgba(255, 61, 103, 0.8);
   animation: survival-pulse-text 0.5s ease-in-out;
 }
@@ -43,9 +43,8 @@
   background-color: rgba(201, 24, 74, 0.8);
 }
 
-/* Completed transition theme - Purple */
 .completed-transition .transition-text {
-  color: #9d4edd;
+  color: var(--color-primary-purple);
   text-shadow: 0 0 20px rgba(157, 78, 221, 0.8);
 }
 
@@ -53,6 +52,7 @@
   background-color: rgba(123, 44, 191, 0.8);
 }
 
+/* Animation Keyframes */
 @keyframes survival-pulse-text {
   0% {
     opacity: 0;
@@ -80,35 +80,6 @@
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.countdown-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-  pointer-events: none;
-  overflow: hidden;
-  animation: overlay-pulse 1s ease-in-out infinite;
-}
-
-.countdown-overlay::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 215, 0, 0.3) 0%,
-    transparent 70%
-  );
-  animation: rotate 10s linear infinite;
 }
 
 @keyframes overlay-pulse {
@@ -142,31 +113,6 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
-.countdown-overlay::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border: 2px solid rgba(255, 215, 0, 0.4);
-  border-radius: 16px;
-  animation: border-pulse 1s ease-in-out infinite alternate;
-  box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.3);
-}
-
-.countdown-number {
-  position: relative;
-  font-size: 12rem;
-  font-weight: 800;
-  color: #ffd700;
-  text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 0.8);
-  transform-origin: center;
-}
-
-.animate-number {
-  animation: countdown-number-animation 1s ease-in-out;
-}
 
 @keyframes countdown-number-animation {
   0% {
@@ -187,20 +133,6 @@
   }
 }
 
-.countdown-number::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 215, 0, 0.6);
-  transform: translate(-50%, -50%);
-  animation: ring-pulse 1s infinite;
-  z-index: -1;
-}
-
 @keyframes ring-pulse {
   0% {
     transform: translate(-50%, -50%) scale(0.8);
@@ -214,4 +146,74 @@
     transform: translate(-50%, -50%) scale(0.8);
     opacity: 0.5;
   }
+}
+
+/* Countdown Overlay */
+.countdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+  overflow: hidden;
+  animation: overlay-pulse var(--transition-slow) ease-in-out infinite;
+}
+
+.countdown-overlay::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    var(--firefly-yellow) 0%,
+    transparent 70%
+  );
+  animation: rotate 10s linear infinite;
+}
+
+.countdown-overlay::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 16px;
+  animation: border-pulse var(--transition-slow) ease-in-out infinite alternate;
+  box-shadow: inset 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.countdown-number {
+  position: relative;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-primary-gold);
+  text-shadow: var(--shadow-glow-gold), 0 0 100px rgba(255, 215, 0, 0.8);
+  transform-origin: center;
+}
+
+.animate-number {
+  animation: countdown-number-animation var(--transition-slow) ease-in-out;
+}
+
+.countdown-number::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  transform: translate(-50%, -50%);
+  animation: ring-pulse var(--transition-slow) infinite;
+  z-index: -1;
 }

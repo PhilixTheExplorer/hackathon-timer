@@ -1,0 +1,114 @@
+/* Layout and main container styles */
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  padding: var(--spacing-sm);
+}
+
+/* Running mode layout with mascot */
+.main-container.running {
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Center layouts for non-running modes */
+.main-container.idle,
+.main-container.survival,
+.main-container.completed {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hackathon timer container */
+.hackathon-timer {
+  font-family: var(--font-family-primary);
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+  backdrop-filter: blur(10px);
+  color: var(--color-text-primary);
+  position: relative;
+  z-index: var(--z-content);
+  min-height: 100vh;
+}
+
+/* Adjust hackathon-timer for side-by-side layout */
+.main-container.running .hackathon-timer {
+  flex: 1;
+}
+
+/* Typography */
+h1 {
+  color: var(--color-primary-cyan);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+  transition: var(--transition-medium);
+}
+
+h2 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-md);
+}
+
+/* State-specific heading styles */
+.hackathon-timer.idle h1 {
+  color: var(--color-primary-gold);
+  text-shadow: var(--shadow-glow-gold);
+  animation: idle-firefly-glow 4s ease-in-out infinite alternate;
+}
+
+.hackathon-timer.running h1 {
+  color: var(--color-primary-cyan);
+}
+
+.hackathon-timer.survival h1 {
+  color: var(--color-primary-red);
+  text-shadow: var(--shadow-glow-red);
+  animation: survival-firefly-title 3s ease-in-out infinite alternate;
+}
+
+.hackathon-timer.completed h1 {
+  color: var(--color-primary-purple);
+  text-shadow: var(--shadow-glow-purple);
+  animation: completed-firefly-title 5s ease-in-out infinite alternate;
+}
+
+/* Title animations */
+@keyframes idle-firefly-glow {
+  0% {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+    color: var(--color-primary-gold);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
+    color: #ffed4e;
+  }
+}
+
+@keyframes survival-firefly-title {
+  0% {
+    text-shadow: 0 0 25px rgba(255, 61, 103, 0.7), 0 0 50px rgba(255, 61, 103, 0.4);
+    color: var(--color-primary-red);
+  }
+  100% {
+    text-shadow: 0 0 35px rgba(255, 61, 103, 0.9), 0 0 70px rgba(255, 61, 103, 0.5);
+    color: #ff5252;
+  }
+}
+
+@keyframes completed-firefly-title {
+  0% {
+    text-shadow: 0 0 22px rgba(157, 78, 221, 0.6), 0 0 45px rgba(157, 78, 221, 0.3);
+    color: var(--color-primary-purple);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(157, 78, 221, 0.8), 0 0 60px rgba(157, 78, 221, 0.4);
+    color: #ba55d3;
+  }
+}
