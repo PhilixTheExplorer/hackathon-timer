@@ -30,7 +30,6 @@
   font-family: var(--font-family-body);
   margin: 0 auto;
   padding: var(--spacing-xl);
-  backdrop-filter: blur(10px);
   color: var(--color-text-primary);
   position: relative;
   z-index: var(--z-content);
