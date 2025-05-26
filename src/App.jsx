@@ -198,7 +198,6 @@ function App() {
         {timerStatus === "running" && (
           <div className="mascot-container">
             <img
-              width="400"
               src="/mascot.png"
               alt="Hackathon Mascot"
               className="mascot-image"
